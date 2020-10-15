@@ -1,0 +1,22 @@
+<Script>botthestrange:Progressive AFK Splasher:0.13
+<Description>Progressive AFK Splasher | To start script have all runes (Air, Water, Earth, Fire, Mind) in inventory. Start Next to NPC you wish to splash on, when prompted type in NPC name. | For splashing make sure you have -65 Magic bonus � To obtain this, wear a full suit of armor and wield the Goblin Staff. | This script will update auto cast spell up to Fire Strike.
+<Boolean>EarthStrike:true
+<Boolean>FireStrike:true
+<Boolean>WindStrike:true
+<Boolean>WaterStrike:true
+<Timer>AttackReset:540000,false,0,false
+<User Input>NPC:Rat
+[0, Sleeping, sleepRandom, 2:1326, 2:8026]
+[0, Mouse, moveOutsideScreen]
+[19, NPC, isUnderAttack, {false}, 1:[Rat]]
+[19, MyPlayer, isUnderAttack, {false}]
+[19, MyPlayer, isAnimating, {false}]
+[19, Combat, isFighting, {false}]
+[19, NPC, interactWith, 1:Rat, 1:Attack]
+[19, Mouse, moveOutsideScreen]
+[21, Timers, isRunning, {false}, 1:AttackReset]
+[21, NPC, isUnderAttack, {false}, 1:[Rat]]
+[21, MyPlayer, isAnimating, {false}]
+[21, NPC, interactWith, 1:Rat, 1:Attack]
+[21, Mouse, moveOutsideScreen]
+[21, Timers, reset, 1:[AttackReset]]

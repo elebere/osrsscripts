@@ -1,0 +1,41 @@
+<Script>IR0N:Magic Curse:0.1
+<Description>The script will cast Confuse, Weaken, and Curse until your desired Magic level.
+<Cycle>50,200,50,200
+<Boolean>castConfuse:false
+<Boolean>castWeaken:false
+<Boolean>castCurse:false
+<User Input>NPC to Attack:Monk of Zamorak
+[0, Skills, getSkillLevel, 1:MAGIC, 1:<, 2:11, 3:true]
+[0, Magic, canCast, {true}, 1:NORMAL, 1:CONFUSE]
+[0, Variables, editBoolean, 1:castConfuse, 3:true]
+[1, Skills, getSkillLevel, 1:MAGIC, 1:<, 2:19, 3:true]
+[1, Skills, getSkillLevel, 1:MAGIC, 1:>=, 2:11, 3:true]
+[1, Magic, canCast, {true}, 1:NORMAL, 1:WEAKEN]
+[1, Variables, editBoolean, 1:castConfuse, 3:false]
+[1, Variables, editBoolean, 1:castWeaken, 3:true]
+[2, Skills, getSkillLevel, 1:MAGIC, 1:>=, 2:19, 3:true]
+[2, Magic, canCast, {true}, 1:NORMAL, 1:CURSE]
+[2, Sleeping, sleepRandom, 2:250, 2:1500]
+[2, Variables, editBoolean, 1:castWeaken, 3:false]
+[2, Variables, editBoolean, 1:castConfuse, 3:false]
+[2, Variables, editBoolean, 1:castCurse, 3:true]
+[3, Variables, getBoolean, 1:castConfuse, 3:true]
+[3, Magic, castSpell, 1:NORMAL, 1:CONFUSE]
+[4, Variables, getBoolean, 1:castWeaken, 3:true]
+[4, Magic, castSpell, 1:NORMAL, 1:WEAKEN]
+[5, Variables, getBoolean, 1:castCurse, 3:true]
+[5, Magic, isSpellSelected, {false}]
+[5, MyPlayer, isAnimating, {false}]
+[5, Magic, castSpell, 1:NORMAL, 1:CURSE]
+[6, Magic, isSpellSelected, {true}]
+[6, NPC, interactWith, 1:Monk of Zamorak, 1:Cast]
+[7, Skills, getSkillLevel, 1:MAGIC, 1:<, 2:11, 3:true]
+[7, Magic, canCast, {false}, 1:NORMAL, 1:CONFUSE]
+[7, Logout, stop, {false}]
+[8, Skills, getSkillLevel, 1:MAGIC, 1:<, 2:19, 3:true]
+[8, Skills, getSkillLevel, 1:MAGIC, 1:>=, 2:11, 3:true]
+[8, Magic, canCast, {false}, 1:NORMAL, 1:WEAKEN]
+[8, Logout, stop, {false}]
+[9, Skills, getSkillLevel, 1:MAGIC, 1:>=, 2:19, 3:true]
+[9, Magic, canCast, {false}, 1:NORMAL, 1:CURSE]
+[9, Logout, stop, {false}]
