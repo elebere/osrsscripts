@@ -1,0 +1,48 @@
+<Script>ElectricBear:Shrimp & Anchovy Fish & Cook:V0.1
+<Description>Shrimp & Anchovy fisher and cooker
+<Boolean>cookedFish:false
+<Area>lumRange:3230,3197,3232,3195,0
+<Area>lumCookRange:3234,3197,3236,3195,0
+<Area>lumNetFish:3230,3159,3250,3139,0
+<Area>LumSwampNet:3240,3153,3246,3147,0
+<Area>AREA_I:3230,3159,3250,3139,0
+<Area>AREA_II:3230,3197,3232,3195,0
+<Area>AREA_III:3240,3153,3246,3147,0
+[0, MyPlayer, isAnimating, {false}]
+[0, Inventory, isFull, {false}]
+[0, MyPlayer, areaContainsPlayer, {true}, 1:AREA_I]
+[0, Sleeping, sleepRandom, 2:1000, 2:3000]
+[0, NPC, interactWith, 1:Fishing spot, 1:net]
+[0, Mouse, moveOutsideScreen]
+[2, Inventory, isFull, {true}]
+[2, MyPlayer, isAnimating, {false}]
+[2, MyPlayer, areaContainsPlayer, {false}, 1:AREA_II]
+[2, Sleeping, sleepRandom, 2:2000, 2:5000]
+[2, WalkTo, walkToArea, 1:lumRange, 3:true, 3:false, 3:false]
+[3, MyPlayer, areaContainsPlayer, {false}, 1:AREA_III]
+[3, Inventory, isFull, {false}]
+[3, WalkTo, walkToArea, 1:LumSwampNet, 3:true, 3:false, 3:false]
+[4, Settings, isRunning, {false}]
+[4, Settings, getRunEnergy, 1:>=, 2:17]
+[4, Settings, enableRunning]
+[5, MyPlayer, areaContainsPlayer, {true}, 1:AREA_II]
+[5, MyPlayer, isAnimating, {false}]
+[5, MyPlayer, isMoving, {false}]
+[5, Inventory, isFull, {true}]
+[5, Inventory, inventoryContainsPartialName, {true}, 1:Raw, 3:false, 3:true]
+[5, Mouse, hoverEntity, 1:Range, 1:RS2Object]
+[5, Sleeping, sleepRandom, 2:350, 2:550]
+[5, Mouse, leftClick]
+[5, Sleeping, sleepRandom, 2:350, 2:550]
+[5, Keyboard, type, {false}, 2:[49]]
+[5, Mouse, moveOutsideScreen]
+[5, Sleeping, sleepAnimating, 2:2500, 2:5000]
+[5, Variables, editBoolean, 1:cookedFish, 3:true]
+[6, Inventory, inventoryContainsPartialName, {false}, 1:Raw, 3:false, 3:true]
+[6, Variables, getBoolean, 1:cookedFish, 3:true]
+[6, Sleeping, sleepRandom, 2:800, 2:1200]
+[6, Inventory, dropAllExcept, 2:303]
+[6, Variables, editBoolean, 1:cookedFish, 3:false]
+[7, Skills, getSkillLevel, 1:FISHING, 1:>=, 2:20, 3:false]
+[7, Inventory, inventoryContainsPartialName, {false}, 1:Raw, 3:false, 3:true]
+[7, Logout, stop, {false}]
