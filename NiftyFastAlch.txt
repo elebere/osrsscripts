@@ -1,0 +1,49 @@
+<Script>Nifty:Nifty Fast Alch:.01
+<Description>Better xp/hr than Project's :P Place alch item in 12th inventory spot.
+<Cycle>100,150,100,150
+<String>EnableAFK:Yes or No
+<String>AlchItem:Your item here
+<Boolean>EnableAFK:false
+<Boolean>Setup:false
+<Random Number>AFK_short:1:200
+<Random Number>AFK_long:1:700
+<User Input>AlchItem:Your item here
+<User Input>EnableAFK:Yes or No
+[0, Variables, getBoolean, 1:Setup, 3:false]
+[0, Variables, editString, 1:AlchItem, 1:Your item here]
+[0, Variables, editString, 1:EnableAFK, 1:Yes or No]
+[0, Variables, editBoolean, 1:Setup, 3:true]
+[1, Tabs, isOpen, {false}, 1:[MAGIC]]
+[1, Inventory, containsAny, 1:Your item here]
+[1, Magic, isSpellSelected, {false}]
+[1, Tabs, open, {false}, 1:[MAGIC]]
+[2, Configs, isSet, {true}, 2:1140, 2:0]
+[2, Mouse, moveMouseAndClick, 2:640, 2:457, 2:3]
+[2, Sleeping, sleepRandom, 2:300, 2:500]
+[2, RS2Widget, interact, 2:218, 2:185, 2:0, 1:Change filter]
+[2, Mouse, moveMouseAndClick, 2:640, 2:457, 2:3]
+[3, Inventory, contains, {false}, 1:Your item here]
+[3, Logout, stop, {true}]
+[5, Inventory, containsAny, 1:Your item here]
+[5, Configs, isSet, {true}, 2:1140, 2:268435456]
+[5, Magic, isSpellSelected, {false}]
+[5, Tabs, isOpen, {true}, 1:[MAGIC]]
+[5, Variables, changeScriptState, 1:[Alching]]
+[5, Mouse, moveMouseAndClick, 2:714, 2:298, 2:10]
+[5, Sleeping, sleepRandom, 2:20, 2:900]
+[6, Tabs, isOpen, {true}, 1:[INVENTORY]]
+[6, Inventory, containsAny, 1:Your item here]
+[6, Magic, isSpellSelected, {true}]
+[6, Mouse, moveMouseAndClick, 2:704, 2:300]
+[6, Tabs, isOpen, {true}, SLEEP_UNTIL:2500, 1:MAGIC]
+[8, Variables, getRandomNumber, 1:AFK_short, 1:==, 2:5]
+[8, Variables, getString, 1:EnableAFK, 1:Yes]
+[8, Mouse, moveOutsideScreen]
+[8, Variables, changeScriptState, 1:[Short AFK]]
+[8, Sleeping, sleepRandom, 2:10000, 2:30000]
+[9, Variables, getRandomNumber, 1:AFK_long, 1:==, 2:5]
+[9, Variables, getString, 1:EnableAFK, 1:Yes]
+[9, Mouse, moveOutsideScreen]
+[9, Variables, changeScriptState, 1:[Long AFK]]
+[9, Sleeping, sleepRandom, 2:40000, 2:60000]
+
